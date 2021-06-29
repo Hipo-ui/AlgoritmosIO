@@ -1,0 +1,576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0107)https://wrprod01-prod-useast1.mathworks.com/static/fKdEFFKU/MATLAB%20Drive/Lagrange/html/app1_exported.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>app1_exported</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-06-29"><meta name="DC.source" content="app1_exported.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput"><span class="keyword">classdef</span> app1_exported &lt; matlab.apps.AppBase
+
+    <span class="comment">% Properties that correspond to app components</span>
+    <span class="keyword">properties</span> (Access = public)
+        UIFigure                        <span class="typesection">matlab.ui.Figure</span>
+        MximodeIngresosEditField        <span class="typesection">matlab.ui.control.NumericEditField</span>
+        MximodeIngresosEditFieldLabel   <span class="typesection">matlab.ui.control.Label</span>
+        NmerodeHorasEditField           <span class="typesection">matlab.ui.control.NumericEditField</span>
+        NmerodeHorasEditFieldLabel      <span class="typesection">matlab.ui.control.Label</span>
+        NmerodeToneladasEditField       <span class="typesection">matlab.ui.control.NumericEditField</span>
+        NmerodeToneladasEditFieldLabel  <span class="typesection">matlab.ui.control.Label</span>
+        CostoxHoraEditField             <span class="typesection">matlab.ui.control.NumericEditField</span>
+        CostoxHoraEditFieldLabel        <span class="typesection">matlab.ui.control.Label</span>
+        PresupuestoEditField            <span class="typesection">matlab.ui.control.NumericEditField</span>
+        PresupuestoEditFieldLabel       <span class="typesection">matlab.ui.control.Label</span>
+        Exponente2EditField             <span class="typesection">matlab.ui.control.NumericEditField</span>
+        Exponente2EditFieldLabel        <span class="typesection">matlab.ui.control.Label</span>
+        CostoToneladaEditField          <span class="typesection">matlab.ui.control.NumericEditField</span>
+        CostoToneladaEditFieldLabel     <span class="typesection">matlab.ui.control.Label</span>
+        IndiceEditField                 <span class="typesection">matlab.ui.control.NumericEditField</span>
+        IndiceEditFieldLabel            <span class="typesection">matlab.ui.control.Label</span>
+        ExponenteEditField              <span class="typesection">matlab.ui.control.NumericEditField</span>
+        ExponenteEditFieldLabel         <span class="typesection">matlab.ui.control.Label</span>
+        CalcularButton                  <span class="typesection">matlab.ui.control.Button</span>
+        Label                           <span class="typesection">matlab.ui.control.Label</span>
+        MultiplicadoresdeLagrangeLabel  <span class="typesection">matlab.ui.control.Label</span>
+        CalcularMximoIngresoLabel       <span class="typesection">matlab.ui.control.Label</span>
+    <span class="keyword">end</span>
+
+    <span class="comment">% Callbacks that handle component events</span>
+    <span class="keyword">methods</span> (Access = private)
+
+        <span class="comment">% Button pushed function: CalcularButton</span>
+        <span class="keyword">function</span> CalcularButtonPushed(app, event)
+            exp = app.ExponenteEditField.Value;
+            exp2 = app.Exponente2EditField.Value;
+            indice = app.IndiceEditField.Value;
+            presupuesto = app.PresupuestoEditField.Value;
+            cTonelada = app.CostoToneladaEditField.Value;
+            cHora = app.CostoxHoraEditField.Value;
+
+            syms <span class="string">s</span> <span class="string">h</span> <span class="string">l</span>
+
+            f = (indice*h^exp)*(s^exp2) - l*cHora*h - l*cTonelada*s + l*presupuesto
+            fh = diff(f,h)
+            fs = diff(f,s)
+            fl = diff(f,l)
+
+            eq1 = fh == 0
+            eq2 = fs == 0
+            eq3 = fl == 0
+
+            hola = solve([eq1, eq2, eq3])
+            respuestaH = eval(hola.h)
+            respuestaS = eval(hola.s)
+            respuestaR = indice*(respuestaH^exp)*(respuestaS^exp2)
+            app.NmerodeHorasEditField.Value = respuestaH
+            app.NmerodeToneladasEditField.Value = respuestaS
+            app.MximodeIngresosEditField.Value = respuestaR
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="comment">% Component initialization</span>
+    <span class="keyword">methods</span> (Access = private)
+
+        <span class="comment">% Create UIFigure and components</span>
+        <span class="keyword">function</span> createComponents(app)
+
+            <span class="comment">% Create UIFigure and hide until all components are created</span>
+            app.UIFigure = uifigure(<span class="string">'Visible'</span>, <span class="string">'off'</span>);
+            app.UIFigure.Color = [0 0.1922 0.3216];
+            app.UIFigure.Position = [100 100 640 480];
+            app.UIFigure.Name = <span class="string">'MATLAB App'</span>;
+
+            <span class="comment">% Create CalcularMximoIngresoLabel</span>
+            app.CalcularMximoIngresoLabel = uilabel(app.UIFigure);
+            app.CalcularMximoIngresoLabel.FontSize = 25;
+            app.CalcularMximoIngresoLabel.FontColor = [1 1 1];
+            app.CalcularMximoIngresoLabel.Position = [169 406 303 30];
+            app.CalcularMximoIngresoLabel.Text = <span class="string">'"Calcular Máximo Ingreso"'</span>;
+
+            <span class="comment">% Create MultiplicadoresdeLagrangeLabel</span>
+            app.MultiplicadoresdeLagrangeLabel = uilabel(app.UIFigure);
+            app.MultiplicadoresdeLagrangeLabel.FontWeight = <span class="string">'bold'</span>;
+            app.MultiplicadoresdeLagrangeLabel.FontAngle = <span class="string">'italic'</span>;
+            app.MultiplicadoresdeLagrangeLabel.FontColor = [1 1 1];
+            app.MultiplicadoresdeLagrangeLabel.Position = [243 375 167 22];
+            app.MultiplicadoresdeLagrangeLabel.Text = <span class="string">'Multiplicadores de Lagrange'</span>;
+
+            <span class="comment">% Create Label</span>
+            app.Label = uilabel(app.UIFigure);
+            app.Label.FontColor = [1 1 1];
+            app.Label.Position = [193 396 254 22];
+            app.Label.Text = <span class="string">'_____________________________________'</span>;
+
+            <span class="comment">% Create CalcularButton</span>
+            app.CalcularButton = uibutton(app.UIFigure, <span class="string">'push'</span>);
+            app.CalcularButton.ButtonPushedFcn = createCallbackFcn(app, @CalcularButtonPushed, true);
+            app.CalcularButton.BackgroundColor = [0 0.8902 0];
+            app.CalcularButton.FontSize = 18;
+            app.CalcularButton.FontWeight = <span class="string">'bold'</span>;
+            app.CalcularButton.FontColor = [1 1 1];
+            app.CalcularButton.Position = [277 142 100 30];
+            app.CalcularButton.Text = <span class="string">'Calcular'</span>;
+
+            <span class="comment">% Create ExponenteEditFieldLabel</span>
+            app.ExponenteEditFieldLabel = uilabel(app.UIFigure);
+            app.ExponenteEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.ExponenteEditFieldLabel.FontSize = 15;
+            app.ExponenteEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.ExponenteEditFieldLabel.FontColor = [0 1 1];
+            app.ExponenteEditFieldLabel.Position = [78 307 82 22];
+            app.ExponenteEditFieldLabel.Text = <span class="string">'Exponente'</span>;
+
+            <span class="comment">% Create ExponenteEditField</span>
+            app.ExponenteEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.ExponenteEditField.Position = [175 307 100 22];
+
+            <span class="comment">% Create IndiceEditFieldLabel</span>
+            app.IndiceEditFieldLabel = uilabel(app.UIFigure);
+            app.IndiceEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.IndiceEditFieldLabel.FontSize = 15;
+            app.IndiceEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.IndiceEditFieldLabel.FontColor = [0 1 1];
+            app.IndiceEditFieldLabel.Position = [112 266 48 22];
+            app.IndiceEditFieldLabel.Text = <span class="string">'Indice'</span>;
+
+            <span class="comment">% Create IndiceEditField</span>
+            app.IndiceEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.IndiceEditField.Position = [175 266 100 22];
+
+            <span class="comment">% Create CostoToneladaEditFieldLabel</span>
+            app.CostoToneladaEditFieldLabel = uilabel(app.UIFigure);
+            app.CostoToneladaEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.CostoToneladaEditFieldLabel.FontSize = 15;
+            app.CostoToneladaEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.CostoToneladaEditFieldLabel.FontColor = [0 1 1];
+            app.CostoToneladaEditFieldLabel.Position = [44 226 116 22];
+            app.CostoToneladaEditFieldLabel.Text = <span class="string">'Costo Tonelada'</span>;
+
+            <span class="comment">% Create CostoToneladaEditField</span>
+            app.CostoToneladaEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.CostoToneladaEditField.Position = [175 226 100 22];
+
+            <span class="comment">% Create Exponente2EditFieldLabel</span>
+            app.Exponente2EditFieldLabel = uilabel(app.UIFigure);
+            app.Exponente2EditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.Exponente2EditFieldLabel.FontSize = 15;
+            app.Exponente2EditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.Exponente2EditFieldLabel.FontColor = [0 1 1];
+            app.Exponente2EditFieldLabel.Position = [353 308 94 22];
+            app.Exponente2EditFieldLabel.Text = <span class="string">'Exponente 2'</span>;
+
+            <span class="comment">% Create Exponente2EditField</span>
+            app.Exponente2EditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.Exponente2EditField.Position = [462 308 100 22];
+
+            <span class="comment">% Create PresupuestoEditFieldLabel</span>
+            app.PresupuestoEditFieldLabel = uilabel(app.UIFigure);
+            app.PresupuestoEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.PresupuestoEditFieldLabel.FontSize = 15;
+            app.PresupuestoEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.PresupuestoEditFieldLabel.FontColor = [0 1 1];
+            app.PresupuestoEditFieldLabel.Position = [351 266 96 22];
+            app.PresupuestoEditFieldLabel.Text = <span class="string">'Presupuesto'</span>;
+
+            <span class="comment">% Create PresupuestoEditField</span>
+            app.PresupuestoEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.PresupuestoEditField.Position = [462 266 100 22];
+
+            <span class="comment">% Create CostoxHoraEditFieldLabel</span>
+            app.CostoxHoraEditFieldLabel = uilabel(app.UIFigure);
+            app.CostoxHoraEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.CostoxHoraEditFieldLabel.FontSize = 15;
+            app.CostoxHoraEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.CostoxHoraEditFieldLabel.FontColor = [0 1 1];
+            app.CostoxHoraEditFieldLabel.Position = [349 226 98 22];
+            app.CostoxHoraEditFieldLabel.Text = <span class="string">'Costo x Hora'</span>;
+
+            <span class="comment">% Create CostoxHoraEditField</span>
+            app.CostoxHoraEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.CostoxHoraEditField.Position = [462 226 100 22];
+
+            <span class="comment">% Create NmerodeToneladasEditFieldLabel</span>
+            app.NmerodeToneladasEditFieldLabel = uilabel(app.UIFigure);
+            app.NmerodeToneladasEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.NmerodeToneladasEditFieldLabel.FontSize = 15;
+            app.NmerodeToneladasEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.NmerodeToneladasEditFieldLabel.FontColor = [0 1 1];
+            app.NmerodeToneladasEditFieldLabel.Position = [166 95 161 22];
+            app.NmerodeToneladasEditFieldLabel.Text = <span class="string">'Número de Toneladas'</span>;
+
+            <span class="comment">% Create NmerodeToneladasEditField</span>
+            app.NmerodeToneladasEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.NmerodeToneladasEditField.Position = [342 95 100 22];
+
+            <span class="comment">% Create NmerodeHorasEditFieldLabel</span>
+            app.NmerodeHorasEditFieldLabel = uilabel(app.UIFigure);
+            app.NmerodeHorasEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.NmerodeHorasEditFieldLabel.FontSize = 15;
+            app.NmerodeHorasEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.NmerodeHorasEditFieldLabel.FontColor = [0 1 1];
+            app.NmerodeHorasEditFieldLabel.Position = [196 62 131 22];
+            app.NmerodeHorasEditFieldLabel.Text = <span class="string">'Número de Horas'</span>;
+
+            <span class="comment">% Create NmerodeHorasEditField</span>
+            app.NmerodeHorasEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.NmerodeHorasEditField.Position = [342 62 100 22];
+
+            <span class="comment">% Create MximodeIngresosEditFieldLabel</span>
+            app.MximodeIngresosEditFieldLabel = uilabel(app.UIFigure);
+            app.MximodeIngresosEditFieldLabel.HorizontalAlignment = <span class="string">'right'</span>;
+            app.MximodeIngresosEditFieldLabel.FontSize = 15;
+            app.MximodeIngresosEditFieldLabel.FontWeight = <span class="string">'bold'</span>;
+            app.MximodeIngresosEditFieldLabel.FontColor = [0 1 0];
+            app.MximodeIngresosEditFieldLabel.Position = [178 28 149 22];
+            app.MximodeIngresosEditFieldLabel.Text = <span class="string">'Máximo de Ingresos'</span>;
+
+            <span class="comment">% Create MximodeIngresosEditField</span>
+            app.MximodeIngresosEditField = uieditfield(app.UIFigure, <span class="string">'numeric'</span>);
+            app.MximodeIngresosEditField.Position = [342 28 100 22];
+
+            <span class="comment">% Show the figure after all components are created</span>
+            app.UIFigure.Visible = <span class="string">'on'</span>;
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+    <span class="comment">% App creation and deletion</span>
+    <span class="keyword">methods</span> (Access = public)
+
+        <span class="comment">% Construct app</span>
+        <span class="keyword">function</span> app = app1_exported
+
+            <span class="comment">% Create UIFigure and components</span>
+            createComponents(app)
+
+            <span class="comment">% Register the app with App Designer</span>
+            registerApp(app, app.UIFigure)
+
+            <span class="keyword">if</span> nargout == 0
+                clear <span class="string">app</span>
+            <span class="keyword">end</span>
+        <span class="keyword">end</span>
+
+        <span class="comment">% Code that executes before app deletion</span>
+        <span class="keyword">function</span> delete(app)
+
+            <span class="comment">% Delete UIFigure when app is deleted</span>
+            delete(app.UIFigure)
+        <span class="keyword">end</span>
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB® R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+classdef app1_exported < matlab.apps.AppBase
+
+    % Properties that correspond to app components
+    properties (Access = public)
+        UIFigure                        matlab.ui.Figure
+        MximodeIngresosEditField        matlab.ui.control.NumericEditField
+        MximodeIngresosEditFieldLabel   matlab.ui.control.Label
+        NmerodeHorasEditField           matlab.ui.control.NumericEditField
+        NmerodeHorasEditFieldLabel      matlab.ui.control.Label
+        NmerodeToneladasEditField       matlab.ui.control.NumericEditField
+        NmerodeToneladasEditFieldLabel  matlab.ui.control.Label
+        CostoxHoraEditField             matlab.ui.control.NumericEditField
+        CostoxHoraEditFieldLabel        matlab.ui.control.Label
+        PresupuestoEditField            matlab.ui.control.NumericEditField
+        PresupuestoEditFieldLabel       matlab.ui.control.Label
+        Exponente2EditField             matlab.ui.control.NumericEditField
+        Exponente2EditFieldLabel        matlab.ui.control.Label
+        CostoToneladaEditField          matlab.ui.control.NumericEditField
+        CostoToneladaEditFieldLabel     matlab.ui.control.Label
+        IndiceEditField                 matlab.ui.control.NumericEditField
+        IndiceEditFieldLabel            matlab.ui.control.Label
+        ExponenteEditField              matlab.ui.control.NumericEditField
+        ExponenteEditFieldLabel         matlab.ui.control.Label
+        CalcularButton                  matlab.ui.control.Button
+        Label                           matlab.ui.control.Label
+        MultiplicadoresdeLagrangeLabel  matlab.ui.control.Label
+        CalcularMximoIngresoLabel       matlab.ui.control.Label
+    end
+
+    % Callbacks that handle component events
+    methods (Access = private)
+
+        % Button pushed function: CalcularButton
+        function CalcularButtonPushed(app, event)
+            exp = app.ExponenteEditField.Value;
+            exp2 = app.Exponente2EditField.Value;
+            indice = app.IndiceEditField.Value;
+            presupuesto = app.PresupuestoEditField.Value;
+            cTonelada = app.CostoToneladaEditField.Value;
+            cHora = app.CostoxHoraEditField.Value;
+            
+            syms s h l
+            
+            f = (indice*h^exp)*(s^exp2) - l*cHora*h - l*cTonelada*s + l*presupuesto
+            fh = diff(f,h)
+            fs = diff(f,s)
+            fl = diff(f,l)
+            
+            eq1 = fh == 0
+            eq2 = fs == 0
+            eq3 = fl == 0
+            
+            hola = solve([eq1, eq2, eq3])
+            respuestaH = eval(hola.h)
+            respuestaS = eval(hola.s) 
+            respuestaR = indice*(respuestaH^exp)*(respuestaS^exp2)
+            app.NmerodeHorasEditField.Value = respuestaH
+            app.NmerodeToneladasEditField.Value = respuestaS
+            app.MximodeIngresosEditField.Value = respuestaR
+        end
+    end
+
+    % Component initialization
+    methods (Access = private)
+
+        % Create UIFigure and components
+        function createComponents(app)
+
+            % Create UIFigure and hide until all components are created
+            app.UIFigure = uifigure('Visible', 'off');
+            app.UIFigure.Color = [0 0.1922 0.3216];
+            app.UIFigure.Position = [100 100 640 480];
+            app.UIFigure.Name = 'MATLAB App';
+
+            % Create CalcularMximoIngresoLabel
+            app.CalcularMximoIngresoLabel = uilabel(app.UIFigure);
+            app.CalcularMximoIngresoLabel.FontSize = 25;
+            app.CalcularMximoIngresoLabel.FontColor = [1 1 1];
+            app.CalcularMximoIngresoLabel.Position = [169 406 303 30];
+            app.CalcularMximoIngresoLabel.Text = '"Calcular Máximo Ingreso"';
+
+            % Create MultiplicadoresdeLagrangeLabel
+            app.MultiplicadoresdeLagrangeLabel = uilabel(app.UIFigure);
+            app.MultiplicadoresdeLagrangeLabel.FontWeight = 'bold';
+            app.MultiplicadoresdeLagrangeLabel.FontAngle = 'italic';
+            app.MultiplicadoresdeLagrangeLabel.FontColor = [1 1 1];
+            app.MultiplicadoresdeLagrangeLabel.Position = [243 375 167 22];
+            app.MultiplicadoresdeLagrangeLabel.Text = 'Multiplicadores de Lagrange';
+
+            % Create Label
+            app.Label = uilabel(app.UIFigure);
+            app.Label.FontColor = [1 1 1];
+            app.Label.Position = [193 396 254 22];
+            app.Label.Text = '_____________________________________';
+
+            % Create CalcularButton
+            app.CalcularButton = uibutton(app.UIFigure, 'push');
+            app.CalcularButton.ButtonPushedFcn = createCallbackFcn(app, @CalcularButtonPushed, true);
+            app.CalcularButton.BackgroundColor = [0 0.8902 0];
+            app.CalcularButton.FontSize = 18;
+            app.CalcularButton.FontWeight = 'bold';
+            app.CalcularButton.FontColor = [1 1 1];
+            app.CalcularButton.Position = [277 142 100 30];
+            app.CalcularButton.Text = 'Calcular';
+
+            % Create ExponenteEditFieldLabel
+            app.ExponenteEditFieldLabel = uilabel(app.UIFigure);
+            app.ExponenteEditFieldLabel.HorizontalAlignment = 'right';
+            app.ExponenteEditFieldLabel.FontSize = 15;
+            app.ExponenteEditFieldLabel.FontWeight = 'bold';
+            app.ExponenteEditFieldLabel.FontColor = [0 1 1];
+            app.ExponenteEditFieldLabel.Position = [78 307 82 22];
+            app.ExponenteEditFieldLabel.Text = 'Exponente';
+
+            % Create ExponenteEditField
+            app.ExponenteEditField = uieditfield(app.UIFigure, 'numeric');
+            app.ExponenteEditField.Position = [175 307 100 22];
+
+            % Create IndiceEditFieldLabel
+            app.IndiceEditFieldLabel = uilabel(app.UIFigure);
+            app.IndiceEditFieldLabel.HorizontalAlignment = 'right';
+            app.IndiceEditFieldLabel.FontSize = 15;
+            app.IndiceEditFieldLabel.FontWeight = 'bold';
+            app.IndiceEditFieldLabel.FontColor = [0 1 1];
+            app.IndiceEditFieldLabel.Position = [112 266 48 22];
+            app.IndiceEditFieldLabel.Text = 'Indice';
+
+            % Create IndiceEditField
+            app.IndiceEditField = uieditfield(app.UIFigure, 'numeric');
+            app.IndiceEditField.Position = [175 266 100 22];
+
+            % Create CostoToneladaEditFieldLabel
+            app.CostoToneladaEditFieldLabel = uilabel(app.UIFigure);
+            app.CostoToneladaEditFieldLabel.HorizontalAlignment = 'right';
+            app.CostoToneladaEditFieldLabel.FontSize = 15;
+            app.CostoToneladaEditFieldLabel.FontWeight = 'bold';
+            app.CostoToneladaEditFieldLabel.FontColor = [0 1 1];
+            app.CostoToneladaEditFieldLabel.Position = [44 226 116 22];
+            app.CostoToneladaEditFieldLabel.Text = 'Costo Tonelada';
+
+            % Create CostoToneladaEditField
+            app.CostoToneladaEditField = uieditfield(app.UIFigure, 'numeric');
+            app.CostoToneladaEditField.Position = [175 226 100 22];
+
+            % Create Exponente2EditFieldLabel
+            app.Exponente2EditFieldLabel = uilabel(app.UIFigure);
+            app.Exponente2EditFieldLabel.HorizontalAlignment = 'right';
+            app.Exponente2EditFieldLabel.FontSize = 15;
+            app.Exponente2EditFieldLabel.FontWeight = 'bold';
+            app.Exponente2EditFieldLabel.FontColor = [0 1 1];
+            app.Exponente2EditFieldLabel.Position = [353 308 94 22];
+            app.Exponente2EditFieldLabel.Text = 'Exponente 2';
+
+            % Create Exponente2EditField
+            app.Exponente2EditField = uieditfield(app.UIFigure, 'numeric');
+            app.Exponente2EditField.Position = [462 308 100 22];
+
+            % Create PresupuestoEditFieldLabel
+            app.PresupuestoEditFieldLabel = uilabel(app.UIFigure);
+            app.PresupuestoEditFieldLabel.HorizontalAlignment = 'right';
+            app.PresupuestoEditFieldLabel.FontSize = 15;
+            app.PresupuestoEditFieldLabel.FontWeight = 'bold';
+            app.PresupuestoEditFieldLabel.FontColor = [0 1 1];
+            app.PresupuestoEditFieldLabel.Position = [351 266 96 22];
+            app.PresupuestoEditFieldLabel.Text = 'Presupuesto';
+
+            % Create PresupuestoEditField
+            app.PresupuestoEditField = uieditfield(app.UIFigure, 'numeric');
+            app.PresupuestoEditField.Position = [462 266 100 22];
+
+            % Create CostoxHoraEditFieldLabel
+            app.CostoxHoraEditFieldLabel = uilabel(app.UIFigure);
+            app.CostoxHoraEditFieldLabel.HorizontalAlignment = 'right';
+            app.CostoxHoraEditFieldLabel.FontSize = 15;
+            app.CostoxHoraEditFieldLabel.FontWeight = 'bold';
+            app.CostoxHoraEditFieldLabel.FontColor = [0 1 1];
+            app.CostoxHoraEditFieldLabel.Position = [349 226 98 22];
+            app.CostoxHoraEditFieldLabel.Text = 'Costo x Hora';
+
+            % Create CostoxHoraEditField
+            app.CostoxHoraEditField = uieditfield(app.UIFigure, 'numeric');
+            app.CostoxHoraEditField.Position = [462 226 100 22];
+
+            % Create NmerodeToneladasEditFieldLabel
+            app.NmerodeToneladasEditFieldLabel = uilabel(app.UIFigure);
+            app.NmerodeToneladasEditFieldLabel.HorizontalAlignment = 'right';
+            app.NmerodeToneladasEditFieldLabel.FontSize = 15;
+            app.NmerodeToneladasEditFieldLabel.FontWeight = 'bold';
+            app.NmerodeToneladasEditFieldLabel.FontColor = [0 1 1];
+            app.NmerodeToneladasEditFieldLabel.Position = [166 95 161 22];
+            app.NmerodeToneladasEditFieldLabel.Text = 'Número de Toneladas';
+
+            % Create NmerodeToneladasEditField
+            app.NmerodeToneladasEditField = uieditfield(app.UIFigure, 'numeric');
+            app.NmerodeToneladasEditField.Position = [342 95 100 22];
+
+            % Create NmerodeHorasEditFieldLabel
+            app.NmerodeHorasEditFieldLabel = uilabel(app.UIFigure);
+            app.NmerodeHorasEditFieldLabel.HorizontalAlignment = 'right';
+            app.NmerodeHorasEditFieldLabel.FontSize = 15;
+            app.NmerodeHorasEditFieldLabel.FontWeight = 'bold';
+            app.NmerodeHorasEditFieldLabel.FontColor = [0 1 1];
+            app.NmerodeHorasEditFieldLabel.Position = [196 62 131 22];
+            app.NmerodeHorasEditFieldLabel.Text = 'Número de Horas';
+
+            % Create NmerodeHorasEditField
+            app.NmerodeHorasEditField = uieditfield(app.UIFigure, 'numeric');
+            app.NmerodeHorasEditField.Position = [342 62 100 22];
+
+            % Create MximodeIngresosEditFieldLabel
+            app.MximodeIngresosEditFieldLabel = uilabel(app.UIFigure);
+            app.MximodeIngresosEditFieldLabel.HorizontalAlignment = 'right';
+            app.MximodeIngresosEditFieldLabel.FontSize = 15;
+            app.MximodeIngresosEditFieldLabel.FontWeight = 'bold';
+            app.MximodeIngresosEditFieldLabel.FontColor = [0 1 0];
+            app.MximodeIngresosEditFieldLabel.Position = [178 28 149 22];
+            app.MximodeIngresosEditFieldLabel.Text = 'Máximo de Ingresos';
+
+            % Create MximodeIngresosEditField
+            app.MximodeIngresosEditField = uieditfield(app.UIFigure, 'numeric');
+            app.MximodeIngresosEditField.Position = [342 28 100 22];
+
+            % Show the figure after all components are created
+            app.UIFigure.Visible = 'on';
+        end
+    end
+
+    % App creation and deletion
+    methods (Access = public)
+
+        % Construct app
+        function app = app1_exported
+
+            % Create UIFigure and components
+            createComponents(app)
+
+            % Register the app with App Designer
+            registerApp(app, app.UIFigure)
+
+            if nargout == 0
+                clear app
+            end
+        end
+
+        % Code that executes before app deletion
+        function delete(app)
+
+            % Delete UIFigure when app is deleted
+            delete(app.UIFigure)
+        end
+    end
+end
+##### SOURCE END #####
+--></body></html>

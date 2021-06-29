@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap");
+
+body {
+  background-color: #191f3a;
+  color: beige;
+  font-family: "Roboto Mono", monospace;
+}
+
+.bg-nav {
+  background-color: #0d101e;
+}
+
+.contenedor {
+  margin: auto;
+  display: table;
+}
+
+.card {
+  background-color: #29325c;
+}
+
+.size-box {
+  width: 20rem;
+}
+
+.bg-accordion{
+  background-color: #0d101e;
+}
+
+.accordion-button {
+  background-color: #29325c;
+  color: beige;
+}
+.accordion-button:not(.collapsed) {
+  color: beige;
+  background-color: #29325c;
+}
+
+.table {
+  color: beige;
+}
+
+p {
+  position: relative;
+}
+
+p span {
+  position: absolute;
+  right: 0;
+  width: 0;
+  background: #191f3a;
+  border-left: 1px solid beige;
+  animation: escribir 5s steps(30);
+}
+
+@keyframes escribir {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
